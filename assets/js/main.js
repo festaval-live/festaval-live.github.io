@@ -183,4 +183,142 @@
 
   });
 
+  /**
+   * Search functionality
+   */
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  const searchResultsContent = document.getElementById('searchResultsContent');
+  const heroSection = document.getElementById('hero');
+
+  if (searchInput) {
+    // Search data
+    const searchData = [
+      {
+        title: "About Me",
+        content: "Professional illustrator from San Francisco with expertise in digital art and design",
+        url: "about.html",
+        type: "page"
+      },
+      {
+        title: "Resume",
+        content: "Professional experience, education, and skills in graphic design and illustration",
+        url: "resume.html",
+        type: "page"
+      },
+      {
+        title: "Services",
+        content: "Logo design, web design, branding, illustration, and creative services",
+        url: "services.html",
+        type: "page"
+      },
+      {
+        title: "Portfolio",
+        content: "Gallery of creative works including apps, products, branding, and web design",
+        url: "portfolio.html",
+        type: "page"
+      },
+      {
+        title: "Contact",
+        content: "Get in touch for collaborations and project inquiries",
+        url: "contact.html",
+        type: "page"
+      },
+      {
+        title: "Graphic Design",
+        content: "Professional graphic design services and portfolio examples",
+        url: "services.html",
+        type: "service"
+      },
+      {
+        title: "Illustration",
+        content: "Custom illustrations and digital art creations",
+        url: "portfolio.html",
+        type: "service"
+      },
+      {
+        title: "Web Design",
+        content: "Modern web design and user interface development",
+        url: "portfolio.html",
+        type: "service"
+      }
+    ];
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase().trim();
+      
+      if (query === '') {
+        searchResults.style.display = 'none';
+        heroSection.style.display = 'block';
+        return;
+      }
+
+      const results = searchData.filter(item => 
+        item.title.toLowerCase().includes(query) ||
+        item.content.toLowerCase().includes(query)
+      );
+
+      if (results.length > 0) {
+        searchResults.style.display = 'block';
+        heroSection.style.display = 'none';
+        
+        searchResultsContent.innerHTML = results.map(result => `
+          <div class="search-result-item">
+            <h4><a href="${result.url}">${result.title}</a></h4>
+            <p>${result.content}</p>
+            <span class="badge">${result.type}</span>
+          </div>
+        `).join('');
+      } else {
+        searchResults.style.display = 'block';
+        heroSection.style.display = 'none';
+        searchResultsContent.innerHTML = '<p>No results found for "' + query + '"</p>';
+      }
+    });
+
+    // Clear search when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        if (searchInput.value === '') {
+          searchResults.style.display = 'none';
+          heroSection.style.display = 'block';
+        }
+      }
+    });
+  }
+
+  /**
+   * Contact Form
+   */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const loading = this.querySelector('.loading');
+      const errorMessage = this.querySelector('.error-message');
+      const sentMessage = this.querySelector('.sent-message');
+      const submitBtn = this.querySelector('button[type="submit"]');
+      
+      // Show loading
+      loading.style.display = 'block';
+      errorMessage.style.display = 'none';
+      sentMessage.style.display = 'none';
+      submitBtn.disabled = true;
+      
+      // Simulate form submission (replace with actual form handling)
+      setTimeout(() => {
+        loading.style.display = 'none';
+        sentMessage.style.display = 'block';
+        submitBtn.disabled = false;
+        contactForm.reset();
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          sentMessage.style.display = 'none';
+        }, 5000);
+      }, 1500);
+    });
+  }
+
 })();

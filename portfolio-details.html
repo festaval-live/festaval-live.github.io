@@ -120,50 +120,118 @@
                 }
               </script>
 
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/app-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/product-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/branding-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/books-1.jpg" alt="">
-                </div>
-
+              <div class="swiper-wrapper align-items-center" id="projectImages">
+                <!-- Dynamic content will be loaded here -->
               </div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
 
           <div class="col-lg-4">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-              </ul>
+            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200" id="projectInfo">
+              <!-- Dynamic content will be loaded here -->
             </div>
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-              <h2>Exercitationem repudiandae officiis neque suscipit</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
+            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300" id="projectDescription">
+              <!-- Dynamic content will be loaded here -->
             </div>
           </div>
 
         </div>
 
       </div>
+
+      <script>
+        // Get project parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('project') || 'default';
+        
+        // Project data
+        const projects = {
+          'task-manager': {
+            title: 'Task Manager Pro',
+            category: 'Mobile App',
+            client: 'ProductivityCorp',
+            date: '15 June, 2023',
+            url: 'https://taskmanager-pro.app',
+            description: 'A comprehensive mobile application for task management and productivity tracking. Features include real-time collaboration, smart notifications, and advanced analytics.',
+            images: [
+              'assets/img/portfolio/app-1.jpg',
+              'assets/img/masonry-portfolio/masonry-portfolio-1.jpg',
+              'assets/img/masonry-portfolio/masonry-portfolio-4.jpg'
+            ]
+          },
+          'coffee-branding': {
+            title: 'Coffee Shop Branding',
+            category: 'Brand Identity',
+            client: 'Brew & Bean Cafe',
+            date: '10 April, 2023',
+            url: 'https://brewandbean.com',
+            description: 'Complete brand identity design for a local coffee shop including logo, packaging, signage, and marketing materials. Created a warm, inviting brand that reflects the artisanal nature of the business.',
+            images: [
+              'assets/img/portfolio/branding-1.jpg',
+              'assets/img/masonry-portfolio/masonry-portfolio-2.jpg',
+              'assets/img/masonry-portfolio/masonry-portfolio-5.jpg'
+            ]
+          },
+          'ecommerce-web': {
+            title: 'E-commerce Platform',
+            category: 'Web Development',
+            client: 'RetailTech Solutions',
+            date: '22 May, 2023',
+            url: 'https://demo-ecommerce.com',
+            description: 'Modern e-commerce platform with advanced features including AI-powered recommendations, real-time inventory management, and seamless payment integration.',
+            images: [
+              'assets/img/portfolio/product-1.jpg',
+              'assets/img/masonry-portfolio/masonry-portfolio-3.jpg',
+              'assets/img/masonry-portfolio/masonry-portfolio-6.jpg'
+            ]
+          },
+          'default': {
+            title: 'Featured Project',
+            category: 'Web Design',
+            client: 'Creative Studio',
+            date: '01 March, 2023',
+            url: 'https://example.com',
+            description: 'A comprehensive project showcasing modern design principles and cutting-edge technology implementation.',
+            images: [
+              'assets/img/portfolio/app-1.jpg',
+              'assets/img/portfolio/product-1.jpg',
+              'assets/img/portfolio/branding-1.jpg'
+            ]
+          }
+        };
+        
+        // Load project data
+        const project = projects[projectId] || projects['default'];
+        
+        // Update project info
+        document.getElementById('projectInfo').innerHTML = `
+          <h3>Project Information</h3>
+          <ul>
+            <li><strong>Category</strong>: ${project.category}</li>
+            <li><strong>Client</strong>: ${project.client}</li>
+            <li><strong>Project date</strong>: ${project.date}</li>
+            <li><strong>Project URL</strong>: <a href="${project.url}" target="_blank">${project.url}</a></li>
+          </ul>
+        `;
+        
+        // Update project description
+        document.getElementById('projectDescription').innerHTML = `
+          <h2>${project.title}</h2>
+          <p>${project.description}</p>
+        `;
+        
+        // Update project images
+        const imagesHtml = project.images.map(img => `
+          <div class="swiper-slide">
+            <img src="${img}" alt="${project.title}">
+          </div>
+        `).join('');
+        document.getElementById('projectImages').innerHTML = imagesHtml;
+        
+        // Update page title
+        document.title = `${project.title} - Portfolio Details`;
+      </script>
 
     </section><!-- /Portfolio Details Section -->
 

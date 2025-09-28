@@ -54,25 +54,20 @@
           <li><a href="resume.html">Resume</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>Projects</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+              <li><a href="portfolio.html">All Projects</a></li>
+              <li><a href="portfolio.html#web-projects">Web Development</a></li>
+              <li><a href="portfolio.html#mobile-projects">Mobile Apps</a></li>
+              <li><a href="portfolio.html#design-projects">Design</a></li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+          <i class="bi bi-search search-icon"></i>
+        </div>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
@@ -87,6 +82,14 @@
   </header>
 
   <main class="main">
+
+    <!-- Search Results Section -->
+    <section id="searchResults" class="search-results section" style="display: none;">
+      <div class="container">
+        <h2>Search Results</h2>
+        <div id="searchResultsContent"></div>
+      </div>
+    </section>
 
     <!-- Hero Section -->
     <section id="hero" class="hero section">
@@ -114,10 +117,10 @@
         <p>© <span>Copyright</span> <strong class="px-1 sitename">Kelly</strong> <span>All Rights Reserved<br></span></p>
       </div>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        <a href="https://twitter.com/kelly_adams" target="_blank"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://facebook.com/kelly.adams" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://instagram.com/kelly_adams_art" target="_blank"><i class="bi bi-instagram"></i></a>
+        <a href="https://linkedin.com/in/kelly-adams" target="_blank"><i class="bi bi-linkedin"></i></a>
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
